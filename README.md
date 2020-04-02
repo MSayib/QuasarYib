@@ -7,6 +7,13 @@ A Quasar Framework app
 npm install
 ```
 
+### Social Media
+```
+Ya tolong di follow dong
+[Instagram](https://www.instagram.com/sybrzq)
+[Facebook](https://www.facebook.com/MSayibR)
+[Twitter](https://www.twitter.com/MSayibRoziq)
+```
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 quasar dev
