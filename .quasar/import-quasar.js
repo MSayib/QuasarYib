@@ -17,7 +17,7 @@ import iconSet from 'quasar/icon-set/material-icons'
 
 import Vue from 'vue'
 
-import {Quasar,QLayout,QPageContainer,QPage,QHeader,QFooter,QDrawer,QPageSticky,QPageScroller,QTabs,QTab,QRouteTab,QList,QItem,QItemSection,QItemLabel,QCheckbox,QIcon} from 'quasar'
+import {Quasar,QLayout,QPageContainer,QPage,QHeader,QFooter,QDrawer,QPageSticky,QPageScroller,QTabs,QTab,QRouteTab,QList,QItem,QItemSection,QItemLabel,QCheckbox,QIcon,QExpansionItem} from 'quasar'
 
 
-Vue.use(Quasar, { config: {},lang: lang,iconSet: iconSet,components: {QLayout,QPageContainer,QPage,QHeader,QFooter,QDrawer,QPageSticky,QPageScroller,QTabs,QTab,QRouteTab,QList,QItem,QItemSection,QItemLabel,QCheckbox,QIcon} })
+Vue.use(Quasar, { config: {},lang: lang,iconSet: iconSet,components: {QLayout,QPageContainer,QPage,QHeader,QFooter,QDrawer,QPageSticky,QPageScroller,QTabs,QTab,QRouteTab,QList,QItem,QItemSection,QItemLabel,QCheckbox,QIcon,QExpansionItem} })
