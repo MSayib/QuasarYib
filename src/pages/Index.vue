@@ -16,7 +16,7 @@
 
         <q-item
           v-ripple
-          v-for="task in tasks"
+          v-for="task in dataToDo"
           :key="task.id"
           @click="task.completed = !task.completed"
           :class="!task.completed ? 'bg-indigo-1' : 'bg-green-1'"
@@ -49,33 +49,42 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
+  computed: {
+    ...mapGetters("storeTasks", ["dataToDo"])
+    // yg di komen ini cara ke 2, tanpa perlu import, harus disesuaikan juga nama variabel dengan loopingnya
+    // variabel dataToDo() untuk looping, sedangkan yg didalem array itu dataToDo nama variabel pada getters
+    // dataToDo() {
+    //   return this.$store.getters["dataToDo/tasks"];
+    // }
+  },
   data() {
     return {
-      expanded: true,
-      tasks: [
-        {
-          id: 1,
-          name: "Sarapan",
-          completed: false,
-          dueDate: "2020/04/03",
-          dueTime: "08:30"
-        },
-        {
-          id: 2,
-          name: "Mandi",
-          completed: false,
-          dueDate: "2020/04/03",
-          dueTime: "09:00"
-        },
-        {
-          id: 3,
-          name: "Belajar",
-          completed: false,
-          dueDate: "2020/04/03",
-          dueTime: "10:00"
-        }
-      ]
+      expanded: true
+      // tasks: [
+      //   {
+      //     id: 1,
+      //     name: "Sarapan",
+      //     completed: false,
+      //     dueDate: "2020/04/03",
+      //     dueTime: "08:30"
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "Mandi",
+      //     completed: false,
+      //     dueDate: "2020/04/03",
+      //     dueTime: "09:00"
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "Belajar",
+      //     completed: false,
+      //     dueDate: "2020/04/03",
+      //     dueTime: "10:00"
+      //   }
+      // ]
     };
   }
 };
