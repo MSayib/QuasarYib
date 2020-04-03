@@ -60,12 +60,14 @@ module.exports = function (ctx) {
         'QItemLabel',
         'QCheckbox',
         'QIcon',
-        'QExpansionItem'
+        'QExpansionItem',
       ],
       directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Dialog'
+      ]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
