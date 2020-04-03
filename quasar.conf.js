@@ -53,7 +53,13 @@ module.exports = function (ctx) {
         'QPageScroller',
         'QTabs',
         'QTab',
-        'QRouteTab'
+        'QRouteTab',
+        'QList',
+        'QItem',
+        'QItemSection',
+        'QItemLabel',
+        'QCheckbox',
+        'QIcon'
       ],
       directives: [],
 
