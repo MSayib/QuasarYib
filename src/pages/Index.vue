@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md">
-    <q-list separator bordered class="rounded-borders">
+    <q-list separator bordered class="rounded-borders" v-if="Object.keys(dataToDo).length">
       <q-expansion-item
         expand-separator
         label="M Sayib"
@@ -11,6 +11,12 @@
         <potTask v-for="(task, key) in dataToDo" :key="key" :task="task" :id="key"></potTask>
       </q-expansion-item>
     </q-list>
+    <div class="absolute-bottom text-center q-mb-lg">
+      <q-btn @click="bukaAddToDo = true" round dense color="primary" size="24px" icon="add" />
+    </div>
+    <q-dialog v-model="bukaAddToDo">
+      <ModalAddToDo @tutupModal="bukaAddToDo = false" />
+    </q-dialog>
   </q-page>
 </template>
 
@@ -26,10 +32,12 @@ export default {
     // }
   },
   components: {
-    potTask: require("components/compTasks/Task").default
+    potTask: require("components/compTasks/Task").default,
+    ModalAddToDo: require("components/compTasks/Modals/AddToDo").default
   },
   data() {
     return {
+      bukaAddToDo: false,
       expanded: true
       // tasks: [
       //   {

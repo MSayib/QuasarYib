@@ -1,30 +1,32 @@
 import Vue from 'vue'
+import { uid } from 'quasar'
+
 const state = {
     tasks: {
-        'ID1': {
-            name: "Sarapan",
-            completed: false,
-            dueDate: "2020/04/03",
-            dueTime: "08:30"
-        },
-        'ID2': {
-            name: "Mandi",
-            completed: false,
-            dueDate: "2020/04/03",
-            dueTime: "09:00"
-        },
-        'ID3': {
-            name: "Belajar",
-            completed: false,
-            dueDate: "2020/04/03",
-            dueTime: "09:30"
-        },
-        'ID4': {
-            name: "Main",
-            completed: false,
-            dueDate: "2020/04/03",
-            dueTime: "13:00"
-        },
+        // 'ID1': {
+        //     name: "Sarapan",
+        //     completed: false,
+        //     dueDate: "2020/04/03",
+        //     dueTime: "08:30"
+        // },
+        // 'ID2': {
+        //     name: "Mandi",
+        //     completed: false,
+        //     dueDate: "2020/04/03",
+        //     dueTime: "09:00"
+        // },
+        // 'ID3': {
+        //     name: "Belajar",
+        //     completed: false,
+        //     dueDate: "2020/04/03",
+        //     dueTime: "09:30"
+        // },
+        // 'ID4': {
+        //     name: "Main",
+        //     completed: false,
+        //     dueDate: "2020/04/03",
+        //     dueTime: "13:00"
+        // },
     }
     // tasks: [
     //     {
@@ -59,6 +61,9 @@ const mutations = {
         // console.log('hapus id: ', id)
         // delete state.tasks[id]
         Vue.delete(state.tasks, id)
+    },
+    addToDo(state, payload) {
+        Vue.set(state.tasks, payload.id, payload.todo)
     }
 }
 
@@ -68,6 +73,14 @@ const actions = {
     },
     deleteToDo({ commit }, id) {
         commit('deleteToDo', id)
+    },
+    addToDo({ commit }, todo) {
+        let todoId = uid()
+        let payload = {
+            id: todoId,
+            todo: todo
+        }
+        commit('addToDo', payload)
     }
 }
 
