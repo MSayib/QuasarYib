@@ -11,6 +11,7 @@
         <potTask v-for="(task, key) in dataToDo" :key="key" :task="task" :id="key"></potTask>
       </q-expansion-item>
     </q-list>
+    <h3 class="text-center" v-else>Tidak ada kegiatan, silakan tambah kegiatan :)</h3>
     <div class="absolute-bottom text-center q-mb-lg">
       <q-btn @click="bukaAddToDo = true" round dense color="primary" size="24px" icon="add" />
     </div>
@@ -22,6 +23,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   computed: {
     ...mapGetters("storeTasks", ["dataToDo"])

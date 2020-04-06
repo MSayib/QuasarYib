@@ -2,7 +2,7 @@
   <!-- ini modal -->
   <!-- name.sync digunakan untuk membuat si komponen dapat terhubung dengan simpanData yang ada disini -->
   <q-card>
-    <ModalHeader>Add Task</ModalHeader>
+    <ModalHeader>Edit Task</ModalHeader>
     <form @submit.prevent="submitForm">
       <q-card-section>
         <ModalToDoName :name.sync="simpanData.name" ref="ModalToDoName"></ModalToDoName>
@@ -23,6 +23,7 @@ import ModalTime from "components/compTasks/Modals/Shared/ModalTime";
 import ModalButtons from "components/compTasks/Modals/Shared/ModalButtons";
 
 export default {
+  props: ["task", "id"],
   components: {
     ModalHeader,
     ModalToDoName,
@@ -32,16 +33,11 @@ export default {
   },
   data() {
     return {
-      simpanData: {
-        name: "",
-        dueDate: "",
-        dueTime: "",
-        completed: false
-      }
+      simpanData: {}
     };
   },
   methods: {
-    ...mapActions("storeTasks", ["addToDo"]),
+    ...mapActions("storeTasks", ["updateToDo"]),
     submitForm() {
       // this.$refs.name.validate(); sebelumnya jadi refs.ModalToDoName.refs.name karna sudah dipindahkan menjadi komponen
       this.$refs.ModalToDoName.$refs.name.validate();
@@ -50,13 +46,19 @@ export default {
       }
     },
     submitData() {
-      this.addToDo(this.simpanData);
+      this.updateToDo({
+        id: this.id,
+        updates: this.simpanData
+      });
       this.$emit("tutupModal");
     },
     clearDueDate() {
       this.simpanData.dueDate = "";
       this.simpanData.dueTime = "";
     }
+  },
+  mounted() {
+    this.simpanData = Object.assign({}, this.task);
   }
 };
 </script>

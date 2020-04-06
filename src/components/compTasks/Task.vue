@@ -32,14 +32,29 @@
       </div>
     </q-item-section>
     <q-item-section side top>
-      <q-btn @click.stop="moDiHapus(id)" flat round dense color="red" icon="delete" />
+      <div class="row">
+        <q-btn @click.stop="showEditToDo = true" flat round dense color="primary" icon="edit" />
+        <q-btn @click.stop="moDiHapus(id)" flat round dense color="red" icon="delete" />
+      </div>
     </q-item-section>
+    <q-dialog v-model="showEditToDo">
+      <ModalEditToDo @tutupModal="showEditToDo = false" :task="task" :id="id" />
+    </q-dialog>
   </q-item>
 </template>
 <script>
 import { mapActions } from "vuex";
+import ModalEditToDo from "components/compTasks/Modals/EditToDo";
 export default {
   props: ["task", "id"],
+  data() {
+    return {
+      showEditToDo: false
+    };
+  },
+  components: {
+    ModalEditToDo
+  },
   methods: {
     ...mapActions("storeTasks", ["updateToDo", "deleteToDo"]),
     moDiHapus(id) {
